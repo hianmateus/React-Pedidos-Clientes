@@ -34,22 +34,23 @@ function Home() {
                 <Button onClick={NovoPedido}>Novo Pedido</Button>
 
                 <ul>
-                    {Clients.map(client => {
-                            <Client key={client.id}>
-                                <div className='DivP'>
-                                    <p className='Pedidos'>{client.Pedido}</p>
+                    
+                    {Clients.map( client => (
+                        <Client key={client.id}>
+                        <div className='DivP'>
+                            <p className='Pedidos'>{client.Pedido}</p>
 
-                                    <div>
-                                        <p className='Nome'>{client.Cliente}</p>
-                                    </div>
+                            <div>
+                                <p className='Nome'>{client.Cliente}</p>
+                            </div>
 
-                                </div>
+                        </div>
 
-                                <button>
-                                    <img src={Trash} alt="trash-lixo-icon" />
-                                </button>
-                            </Client>
-                        })}
+                        <button>
+                            <img src={Trash} alt="trash-lixo-icon" />
+                        </button>
+                    </Client>
+                    ))}
 
                 </ul>
 
