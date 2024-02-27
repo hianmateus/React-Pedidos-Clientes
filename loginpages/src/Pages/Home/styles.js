@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 export const Main = styled.div`
     
     height: 896px;
@@ -35,6 +36,7 @@ export const Labelp = styled.p`
     font-weight: 700;
     margin-left: 20px;
     opacity: 0.8;
+    margin-bottom: 5px;
 
 `
 
@@ -59,6 +61,7 @@ export const Button = styled.button`
     width: 342px;
     height: 68px;
     padding: 0px 113px;
+    display: flex;
     justify-content: center;
     align-items: center;
     background-color: #D93856;
@@ -66,42 +69,7 @@ export const Button = styled.button`
     font-size: 17px;
     font-weight: 900;
     margin-top: 15px;
+    text-decoration: none;
     cursor: pointer;
-
-`
-
-export const Client = styled.li`
-    width: 342px;
-    height: 101px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.25);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 15px;
-
-    .DivP{
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .Pedidos{
-        color: #fff;
-        opacity: 0.7;
-    }
-
-    .Nome{
-        color: #fff;
-        font-weight: 700;
-        font-size: 20px;
-    }
-
-    button{
-        height: 30px;
-        background: transparent;
-        cursor: pointer;
-    }
-
 
 `

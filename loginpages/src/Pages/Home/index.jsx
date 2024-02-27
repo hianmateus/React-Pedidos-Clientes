@@ -1,21 +1,37 @@
-import { Main, Section, Title, Labelp, Labeli, Button, Client } from './styles'
+import { Main, Section, Title, Labelp, Labeli, Button } from './styles'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 import BurgerImage from '../../assets/Burger1.svg'
-import Trash from '../../assets/Trash.svg'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 function Home() {
 
     const [Clients, setClients] = useState([])
+    const history = useHistory()
+    const name = useRef()
+    const order = useRef()
 
-    function NovoPedido() {
-        setClients([{ id: Math.random(), Cliente: "João", Pedido: "1 Coca-Cola, 1 X-Salada" }])
-        console.log(Clients)
+    async function NewOrder() {
+
+        const {data: newOrder} = await axios.post('http://localhost:3001/users', {
+            name: name.current.value, 
+            order: order.current.value
+        })
+
+        console.log(newOrder)
+
+        setClients([... Clients, newOrder])
+
+        name.current.value = ""
+        order.current.value = ""
+
+        history.push('/pedidos')
+
     }
 
+
     return (
-
-
 
         <Main>
 
@@ -26,33 +42,12 @@ function Home() {
             <Section>
 
                 <Labelp>Pedido</Labelp>
-                <Labeli></Labeli>
+                <Labeli ref={order}></Labeli>
 
                 <Labelp>Nome do Cliente</Labelp>
-                <Labeli></Labeli>
+                <Labeli ref={name}></Labeli>
 
-                <Button onClick={NovoPedido}>Novo Pedido</Button>
-
-                <ul>
-                    
-                    {Clients.map( client => (
-                        <Client key={client.id}>
-                        <div className='DivP'>
-                            <p className='Pedidos'>{client.Pedido}</p>
-
-                            <div>
-                                <p className='Nome'>{client.Cliente}</p>
-                            </div>
-
-                        </div>
-
-                        <button>
-                            <img src={Trash} alt="trash-lixo-icon" />
-                        </button>
-                    </Client>
-                    ))}
-
-                </ul>
+                <Button onClick={NewOrder}>Novo Pedido</Button>
 
             </Section>
 
